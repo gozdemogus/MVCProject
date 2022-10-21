@@ -11,7 +11,7 @@ namespace BusinessLayer.Abstract
     {
         List<Category> GetList();
 
-        //once methodu interface tarafında tanımla sonra icini sınıf tarafında doldur.
+        //once methodu interface tarafında tanımla sonra icini sınıf tarafında (manager) doldur.
         void CategoryAdd(Category category);
 
         Category GetById(int id);

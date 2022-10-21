@@ -16,6 +16,5 @@ namespace DataAccessLayer.Abstract
         //void Update(Category p);
         //void Delete(Category p);
 
-
     }
 }
