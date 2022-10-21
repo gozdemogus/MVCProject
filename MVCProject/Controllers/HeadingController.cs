@@ -52,5 +52,21 @@ namespace MVCProject.Controllers
             hm.Headingadd(p);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult EditHeading(int id)
+        {
+            List<SelectListItem> valuecategory = (from x in cm.GetList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.CategoryName,
+                                                      Value = x.CategoryId.ToString()
+                                                  }).ToList();
+            ViewBag.vlc = valuecategory;
+            var HeadingValue = hm.GetById(id);
+            return View(HeadingValue);
+        }
+
+     
     }
 }
