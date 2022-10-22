@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,11 @@ namespace MVCProject.Controllers
         {
             var contactvalues = cm.GetById(id);
             return View(contactvalues);
+        }
+
+        public PartialViewResult MessageListMenu()
+        {
+            return PartialView();
         }
     }
 }

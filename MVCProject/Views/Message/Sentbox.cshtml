@@ -1,11 +1,12 @@
-﻿@using EntityLayer.Concrete;
-@model List<Contact>
+﻿@using EntityLayer.Concrete
+@model List<Message>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sentbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Sentbox</h2>
+
 <html>
 
 <body class="hold-transition sidebar-mini">
@@ -25,12 +26,12 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-        @Html.Action("MessageListMenu", "Contact")
+            @Html.Action("MessageListMenu", "Contact")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Mesajlar</h3>
+                        <h3 class="card-title">Gönderilen Mesajlar</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Ara">
@@ -79,17 +80,17 @@
                                                     <label for="check1"></label>
                                                 </div>
                                             </td>
-                                            <td class="mailbox-star"><a href="/Contact/GetContactDetails/@item.ContactId"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactId">@item.UserName</a></td>
+                                            <td class="mailbox-star"><a href="/Contact/GetContactDetails/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.MessageID">@item.ReceiverMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> 
-                                                @if (item.Message.Length > 30)
+                                                <b>@item.Subject</b>
+                                                @if (item.MessageContent.Length > 30)
                                                 {
-                                                    @item.Message.Substring(0, 30);
+                                                    @item.MessageContent.Substring(0, 30);
                                                 }
                                                 else
                                                 {
-                                                    @item.Message;
+                                                    @item.MessageContent;
                                                 }
 
                                             </td>
