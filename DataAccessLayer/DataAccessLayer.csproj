@@ -96,6 +96,10 @@
     <Compile Include="Migrations\202210212040152_mig_heading_status_add.designer.cs">
       <DependentUpon>202210212040152_mig_heading_status_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210221927338_migration_add_message_class.cs" />
+    <Compile Include="Migrations\202210221927338_migration_add_message_class.designer.cs">
+      <DependentUpon>202210221927338_migration_add_message_class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210212040152_mig_heading_status_add.resx">
       <DependentUpon>202210212040152_mig_heading_status_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210221927338_migration_add_message_class.resx">
+      <DependentUpon>202210221927338_migration_add_message_class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
