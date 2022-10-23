@@ -10,9 +10,11 @@ using System.Web.Security;
 
 namespace MVCProject.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         AdminManager adminManager = new AdminManager(new EFAdminDal());
+        WriterManager writerManager = new WriterManager(new EFWriterDal());
         // GET: Login
         [HttpGet]
         public ActionResult Index()
@@ -35,6 +37,29 @@ namespace MVCProject.Controllers
                 return RedirectToAction("Index");
             }
            
+        }
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WriterLogin(Writer p)
+        {
+            var writerUser = writerManager.GetList().FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            if (writerUser != null)
+            {
+                FormsAuthentication.SetAuthCookie(writerUser.WriterMail, false);
+                Session["WriterMail"] = writerUser.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+            else
+            {
+
+                return RedirectToAction("WriterLogin");
+            }
+            return View();
         }
     }
 }
