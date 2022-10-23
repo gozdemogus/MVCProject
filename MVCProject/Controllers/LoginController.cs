@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MVCProject.Controllers
 {
@@ -24,14 +25,16 @@ namespace MVCProject.Controllers
             var adminUser = adminManager.GetList().FirstOrDefault(x => x.AdminUserName == p.AdminUserName && x.AdminPassword == p.AdminPassword);
             if (adminUser != null)
             {
+                FormsAuthentication.SetAuthCookie(adminUser.AdminUserName,false);
+                Session["AdminUserName"] = adminUser.AdminUserName;
                 return RedirectToAction("Index", "AdminCategory");
             }
             else
             {
-                Response.Write("<script language='javascript'>alert(\"Hatalı Kullanıcı Adı veya Şifre Girdiniz\")</script>");
+              
                 return RedirectToAction("Index");
             }
-            return View();
+           
         }
     }
 }

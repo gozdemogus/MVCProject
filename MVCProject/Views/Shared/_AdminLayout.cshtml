@@ -30,7 +30,6 @@ to get the desired effect
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-  
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -57,17 +56,20 @@ to get the desired effect
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-         with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview">
-                            <a href="/AdminCategory/Index/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Kategoriler
+                        with font-awesome or any other icon font library -->
+                        @if (User.IsInRole("B"))
+                        {
+                            <li class="nav-item has-treeview">
+                                <a href="/AdminCategory/Index/" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Kategoriler
 
-                                </p>
-                            </a>
+                                    </p>
+                                </a>
 
-                        </li>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a href="/Heading/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -135,7 +137,7 @@ to get the desired effect
                             </a>
 
                         </li>
-                        <li class="nav-item has-treeview">
+                        @*<li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
@@ -144,7 +146,7 @@ to get the desired effect
                                 </p>
                             </a>
 
-                        </li>
+                        </li>*@
 
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
@@ -156,7 +158,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/Gallery/Index/" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
@@ -168,7 +170,7 @@ to get the desired effect
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
                                     Hata Sayfaları
-                                   
+
                                 </p>
                             </a>
 
@@ -186,7 +188,7 @@ to get the desired effect
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-door-closed"></i>
                                 <p>
-                                   Çıkış
+                                    Çıkış
                                 </p>
                             </a>
 
@@ -200,7 +202,7 @@ to get the desired effect
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-     
+
             <!-- Main content -->
             <div class="content">
                 @RenderBody()
@@ -209,7 +211,6 @@ to get the desired effect
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
         <!-- Main Footer -->
     </div>
     <!-- ./wrapper -->
