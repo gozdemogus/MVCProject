@@ -15,6 +15,7 @@ namespace MVCProject.Controllers
     {
         AdminManager adminManager = new AdminManager(new EFAdminDal());
         WriterManager writerManager = new WriterManager(new EFWriterDal());
+        //WriterLoginManager wlm = new WriterLoginManager(new EFWriterDal()); 
         // GET: Login
         [HttpGet]
         public ActionResult Index()
@@ -48,6 +49,7 @@ namespace MVCProject.Controllers
         public ActionResult WriterLogin(Writer p)
         {
             var writerUser = writerManager.GetList().FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
+            //var writerUser = wlm.GetWriter(p.WriterMail,p.WriterPassword);
             if (writerUser != null)
             {
                 FormsAuthentication.SetAuthCookie(writerUser.WriterMail, false);
@@ -60,6 +62,13 @@ namespace MVCProject.Controllers
                 return RedirectToAction("WriterLogin");
             }
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings", "Default");
         }
     }
 }

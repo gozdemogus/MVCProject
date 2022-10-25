@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,8 +41,19 @@ namespace MVCProject.Roles
         public override string[] GetRolesForUser(string username)
         {
             AdminManager adminManager = new AdminManager(new EFAdminDal());
-            var roles = adminManager.GetList().FirstOrDefault(x => x.AdminUserName == username);
-            return new string[] { roles.AdminRole };   
+            
+            if (adminManager.GetList().FirstOrDefault(x => x.AdminUserName == username) != null)
+            {
+                 var roles = adminManager.GetList().FirstOrDefault(x => x.AdminUserName == username);
+                return new string[] { roles.AdminRole };
+            }
+            else
+            {
+               
+               return new string[] { "X" };
+
+            }
+            
         }
 
         public override string[] GetUsersInRole(string roleName)

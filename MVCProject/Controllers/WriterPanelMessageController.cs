@@ -16,6 +16,7 @@ namespace MVCProject.Controllers
 
         MessageManager mm = new MessageManager(new EFMessageDal());
         MessageValidator messageValidator = new MessageValidator();
+        WriterManager wm = new WriterManager(new EFWriterDal());
         // GET: WriterPanelMessage
         public ActionResult Index()
         {
@@ -24,15 +25,18 @@ namespace MVCProject.Controllers
 
         public ActionResult Inbox()
         {
-            var messagelist = mm.GetListInbox();
+            string p = Session["WriterMail"].ToString();
+            var messagelist = mm.GetListInbox(p);
             return View(messagelist);
         }
 
 
         public ActionResult Sendbox()
         {
-            var messagelist = mm.GetListSentBox();
+            string p = Session["WriterMail"].ToString();
+            var messagelist = mm.GetListSentBox(p);
             return View(messagelist);
+          
         }
 
         public PartialViewResult MessageListMenu()
@@ -61,10 +65,11 @@ namespace MVCProject.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message p)
         {
+            string sender = (string)Session["WriterMail"];
             ValidationResult results = messageValidator.Validate(p);
             if (results.IsValid)
             {
-                p.SenderMail = "gizem@gmail.com";
+                p.SenderMail = sender;
                 
                 p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 mm.MessageAdd(p);

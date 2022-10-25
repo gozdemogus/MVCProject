@@ -18,15 +18,15 @@ namespace MVCProject.Controllers
         MessageValidator mv = new MessageValidator();
         // GET: Message
         [Authorize]
-        public ActionResult Inbox()
+        public ActionResult Inbox(string p)
         {
-            var messagelist = mm.GetListInbox();
+            var messagelist = mm.GetListInbox(p);
             return View(messagelist);
         }
 
-        public ActionResult Sendbox()
+        public ActionResult Sendbox(string p)
         {
-            var messagelist = mm.GetListSentBox();
+            var messagelist = mm.GetListSentBox(p);
             return View(messagelist);
         }
 
