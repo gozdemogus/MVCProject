@@ -82,7 +82,11 @@ namespace MVCProject.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public ActionResult HeadingReport()
+        {
+            var headingvalues = hm.GetList();
+            return View(headingvalues);
+        }
 
     }
 }
