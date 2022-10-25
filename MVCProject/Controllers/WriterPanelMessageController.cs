@@ -25,7 +25,7 @@ namespace MVCProject.Controllers
 
         public ActionResult Inbox()
         {
-            string p = Session["WriterMail"].ToString();
+            string p = (string)Session["WriterMail"];
             var messagelist = mm.GetListInbox(p);
             return View(messagelist);
         }
@@ -33,7 +33,7 @@ namespace MVCProject.Controllers
 
         public ActionResult Sendbox()
         {
-            string p = Session["WriterMail"].ToString();
+            string p = (string)Session["WriterMail"];
             var messagelist = mm.GetListSentBox(p);
             return View(messagelist);
           
