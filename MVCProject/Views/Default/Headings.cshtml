@@ -45,7 +45,7 @@ to get the desired effect
             <a href="index3.html" class="brand-link">
                 @*<img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">*@
-                <span class="brand-text font-weight-light">Headings</span>
+                <span class="brand-text font-weight-light">Gündem Başlıkları</span>
             </a>
 
             <!-- Sidebar -->
@@ -67,11 +67,12 @@ to get the desired effect
                      {
                         <li class="nav-item">
                             <a href="/Default/Headings/@item.HeadingId" class="nav-link">
-                              @if (item.HeadingName.Length >= 15) {
-                                  <p> @item.HeadingName.Substring(0,15) >> </p>
+                              @if (item.HeadingName.Length >= 23) {
+                                  <p> @item.HeadingName.Substring(0, item.HeadingName.IndexOf(" ", item.HeadingName.IndexOf(" ") + 1)) (Devamını Oku) </p>
+                                 
                                   }
-                                  else
-                                  {
+                              else
+                              {
                                       <p> @item.HeadingName </p>
                                       }
                             </a>

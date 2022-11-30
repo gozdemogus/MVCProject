@@ -83,9 +83,11 @@
                                             <td class="mailbox-name"><a href="/Message/GetInboxMessageDetails/@item.MessageID">@item.SenderMail</a></td>
                                             <td class="mailbox-subject">
                                                 <b>@item.Subject</b>
-                                                @if (item.MessageContent.Length > 30)
+                                                @if (item.MessageContent.Length > 50)
                                                 {
-                                                    @item.MessageContent.Substring(0, 30);
+                                                   @item.MessageContent.Substring(0, item.MessageContent.IndexOf(" ", item.MessageContent.IndexOf(" ") + 25)) <b><i>devamını oku</i></b>
+
+                                                    //@item.MessageContent.Substring(0, 30);
                                                 }
                                                 else
                                                 {
