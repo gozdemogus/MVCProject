@@ -63,25 +63,30 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.Category.CategoryName == "Tiyatro")
+                            if (item.Category.CategoryName == "Film - Dizi")
                             {
                                 color = "badge badge-warning";
                             }
-                            else if (item.Category.CategoryName == "Spor")
-                            {
-                                color = "badge badge-success";
-                            }
-                            else if (item.Category.CategoryName == "Yazılım")
+                            else if (item.Category.CategoryName == "Eğitim")
                             {
                                 color = "badge badge-info";
                             }
-                            else if (item.Category.CategoryName == "Seyahat")
+                            else if (item.Category.CategoryName == "Evcil Hayvan")
+                            {
+                                color = "badge badge-danger";
+                            }
+                            else if (item.Category.CategoryName == "Teknoloji")
                             {
                                 color = "badge badge-success";
                             }
+                            else if (item.Category.CategoryName == "Kültür Sanat")
+                            {
+                                color = "badge badge-dark";
+                            }
+
                             else
                             {
-                                color = "badge badge-success";
+                                color = "badge badge-light";
                             }
                             <tr>
                                 <td>

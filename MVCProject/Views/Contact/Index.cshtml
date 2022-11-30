@@ -82,10 +82,11 @@
                                             <td class="mailbox-star"><a href="/Contact/GetContactDetails/@item.ContactId"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactId">@item.UserName</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> 
-                                                @if (item.Message.Length > 30)
+                                                <b>@item.Subject</b>
+                                                @if (item.Message != null && item.Message.Length > 30)
                                                 {
-                                                    @item.Message.Substring(0, 30);
+                                                    @item.Message.Substring(0, item.Message.IndexOf(" ", item.Message.IndexOf(" ") + 25)) <b><i>devamını oku</i></b>
+                                                  
                                                 }
                                                 else
                                                 {
