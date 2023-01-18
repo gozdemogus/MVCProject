@@ -7,7 +7,7 @@ Includes the project from N-Tier MVC Forum Project lectures
 - Entity Framework
 - N Tier Architecture
 - Repository Design Pattern
-- JavaScript, JQuery, Ajax
+- JavaScript, jQuery, Ajax
 - HTML, CSS
 
 ### Writer List - Details
